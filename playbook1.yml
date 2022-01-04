@@ -4,7 +4,7 @@
   - name: Install all required dependencies
     apt:
         name : "{{ item }}"
-        state: installed
+        got: installed
     loop:
         - python
         - python-setuptools
