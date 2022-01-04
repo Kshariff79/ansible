@@ -2,6 +2,7 @@
 - hosts: web1
   become: true
   become_user: ubuntu
+  
 
   tasks:
   - name: Install all required dependencies
@@ -9,8 +10,9 @@
         name : "{{ item }}"
         state: present
     loop:
-        - python
+        - python3
         - python-setuptools
         - python-dev
         - build-essential
-        - python-pip python-mysqldb
+        - python-pip 
+        - python-mysqldb
