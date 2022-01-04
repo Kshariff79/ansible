@@ -1,5 +1,13 @@
 ---
 - hosts: web1
   tasks:
-  - name: ping
-    ping:
+  - name: Install all required dependencies
+    apt:
+        name : {{ item }}
+        state: installed
+    loop:
+        - python
+        - python-setuptools
+        - python-dev
+        - build-essential
+        - python-pip python-mysqldb
