@@ -5,6 +5,13 @@
   
 
   tasks:
+  - name: Upgrade all apt packages
+    apt: 
+        upgrade: yes
+        update_cache: yes
+        
+
+  
   - name: Install all required dependencies
     apt:
         name : "{{ item }}"
