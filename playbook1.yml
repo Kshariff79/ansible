@@ -1,7 +1,7 @@
 ---
 - hosts: web1
   become: true
-  become_user: ubuntu
+  become_user: root
   
 
   tasks:
