@@ -1,0 +1,24 @@
+---
+- name: Install mysql dependecies
+  apt: 
+        name : "{{ item }}"
+        state: present
+        loop:
+          - mysql-server
+          - mysql-client
+
+- name: start mysql server
+  service:
+        name : mysql
+        state: started
+        enabled: yes
+
+- name: Create Application Database
+  mysql_db: name="{{name}}" state=present
+
+- name:  Create database user
+  mysql_user:
+          name: "{{db_user}}"
+          password: "{{db_pass}}"
+          priv: '*.*:ALL'
+          state: present

@@ -1,0 +1,22 @@
+---
+- name: Install and upgrade pip
+  pip:
+         name: pip
+         extra_args: --upgrade
+         executable: pip3
+
+- name: Install flask modules 
+  pip:
+         name: "{{item}}"
+         state: present
+    
+         loop:
+            - flask
+            - Flask-MySQLdb
+            - flask-mysql
+
+- name: copy the app to destination
+  copy: src=app.py  dest=/opt/app.pycat
+
+- name: start webserver
+  shell: FLASK_APP=opt/app.py nohup flask run --host=0.0.0.0 &
