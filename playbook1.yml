@@ -55,7 +55,7 @@
     
     loop:
         - flask
-        - flask-mysql
+        -  Flask-MySQLdb
 
   - name: copy the app to destination
     copy: src=app.py  dest=/opt/app.py
