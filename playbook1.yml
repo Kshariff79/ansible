@@ -48,8 +48,14 @@
           priv: '*.*:ALL'
           state: present
 
+  - name: Install and upgrade pip
+    pip:
+         name: pip
+         extra_args: --upgrade
+         executable: pip3
+
   - name: Install flask modules 
-    pip3:
+    pip:
          name: "{{item}}"
          state: present
     
@@ -59,7 +65,7 @@
         - flask-mysql
 
   - name: copy the app to destination
-    copy: src=app.py  dest=/opt/app.py
+    copy: src=app.py  dest=/opt/app.pycat
 
   - name: start webserver
     shell: FLASK_APP=opt/app.py nohup flask run --host=0.0.0.0 &
