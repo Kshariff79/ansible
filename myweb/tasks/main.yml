@@ -10,7 +10,7 @@
          name: "{{item}}"
          state: present
     
-         loop:
+  loop:
             - flask
             - Flask-MySQLdb
             - flask-mysql
