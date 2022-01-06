@@ -1,18 +1,10 @@
 ---
-#Using Include yml files playbook
-- hosts: web1
-  become: true
-  become_user: root
-  
 
-  tasks:
   - name: Upgrade all apt packages
     apt: 
         upgrade: yes
-        update_cache: yes
+        update_cache: yes  
         
-
-  
   - name: Install all required dependencies
     apt:
         name : "{{ item }}"
@@ -25,5 +17,4 @@
         - python3-pip 
         - python-mysqldb
 
-  - include: tasks/db.yml
-  - include: tasks/wflask.yml
+  
